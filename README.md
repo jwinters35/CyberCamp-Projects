@@ -3,6 +3,6 @@ These are projects that were completed in my Cyber Boot Camp. They will be image
 
 ### [Project A](https://github.com/jwinters35/CyberCamp-Projects/tree/main/project%20A) - BUILDING A SECURED NETWORK
 
-### [Project B]
+### [Project B](https://github.com/jwinters35/CyberCamp-Projects/tree/main/Project%20B) - 
 
-### [Project C](https://github.com/jwinters35/CyberCamp-Projects/blob/main/Project%20C.pdf) = Certified Ethical Hacking
+### [Project C](https://github.com/jwinters35/CyberCamp-Projects/blob/main/Project%20C.pdf) - Certified Ethical Hacking
