@@ -1,0 +1,75 @@
+#!/usr/bin/env python
+import socket
+import subprocess
+import sys
+from datetime import datetime
+import time
+
+# Clear the screen
+# subprocess.call('clear', shell=True)
+
+import socket  # importing library
+
+def CheckPort(hostName, port):
+    s=socket.socket()
+    try:
+        s.connect((hostName,port))
+    except:
+        return False
+    else:
+        return True
+
+file = open("JamesScanResults" , "w" )
+
+# datetime object containing current date and time
+now = datetime.now()
+# dd/mm/YY H:M:S
+dt_string = now.strftime("%m/%d/%Y %H:%M:%S")
+start = time.time()
+
+##trying to get error handler##
+hostName = input("Host IP Address: ")
+status=subprocess.getstatusoutput("ping -n 1 " + hostName)
+result=str(status)
+if (result.startswith("(0")):
+    print("Host is responding.  Proceeding with port scan.")
+    print("Scan beginning at: ", dt_string)
+
+else:
+    print("Host is not responding.  Aborting scan")
+    RespTup = [hostName, "is not responding.", dt_string,"\n"]
+    # create the tuple of valued to be written to file
+    RespOut = ' '.join(RespTup)  # use join function to create a string for the write command
+    file.write(RespOut)
+    file.close()
+    exit()
+
+# Print a nice banner with information on which host we are about to scan
+print("-" * 80)
+print("Please wait, scanning remote host", hostName)
+print("-" * 80)
+
+# Using the range function to specify ports between (1 and 1025)
+for x in range(50, 58):  # check for all available ports
+    if CheckPort(hostName,x):
+        print("port ", x, " is open")
+        CheckTup = ["Port", str(x), "is open.", "\n"]
+        RespOut = ' '.join(CheckTup)
+        file.write(RespOut)
+
+    else:
+        print('port ', x, ' is closed')
+        CheckTup = ["Port", str(x), "is closed.", "\n"]
+        RespOut = ' '.join(CheckTup)
+        file.write(RespOut)
+
+#Notify user process has finished
+end = time.time()
+print("Task completed. Ports has been scanned.")
+elapsed = end - start
+now = datetime.now()
+dt_string = now.strftime("%m/%d/%Y %H:%M:%S")
+print("Scan completed at: ", dt_string)
+print("Total scan time: ", "%.2f" % elapsed, "seconds.")
+file.write("Scanning Completed in: {total}. \n")
+file.close()
