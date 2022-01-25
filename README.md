@@ -7,4 +7,4 @@ These are projects that were completed in my Cyber Boot Camp. They will be a mix
 
 ### [Project C](https://github.com/jwinters35/CyberCamp-Projects/blob/main/Project%20C.pdf) - Certified Ethical Hacking
 
-### [Project D] - Installing and IDS/IPS
+### [Project D](https://github.com/jwinters35/CyberCamp-Projects/blob/main/Project%20D) - Installing and IDS/IPS
